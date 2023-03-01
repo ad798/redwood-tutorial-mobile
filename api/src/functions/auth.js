@@ -147,12 +147,17 @@ export const handler = async (event, context) => {
       resetTokenExpiresAt: 'resetTokenExpiresAt',
     },
 
+    cors: {
+      origin: 'http://localhost', // <-- android emulator dir
+      credentials: true,
+    },
+
     // Specifies attributes on the cookie that dbAuth sets in order to remember
     // who is logged in. See https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies#restrict_access_to_cookies
     cookie: {
       HttpOnly: true,
       Path: '/',
-      SameSite: 'Strict',
+      SameSite: 'None',
       Secure: process.env.NODE_ENV !== 'development',
 
       // If you need to allow other domains (besides the api side) access to

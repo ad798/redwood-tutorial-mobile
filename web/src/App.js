@@ -13,7 +13,12 @@ const App = () => (
   <FatalErrorBoundary page={FatalErrorPage}>
     <RedwoodProvider titleTemplate="%PageTitle | %AppTitle">
       <AuthProvider>
-        <RedwoodApolloProvider useAuth={useAuth}>
+        <RedwoodApolloProvider
+          useAuth={useAuth}
+          graphQLClientConfig={{
+            httpLinkConfig: { credentials: 'include' },
+          }}
+        >
           <Routes />
         </RedwoodApolloProvider>
       </AuthProvider>

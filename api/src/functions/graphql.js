@@ -16,6 +16,10 @@ export const handler = createGraphQLHandler({
   directives,
   sdls,
   services,
+  cors: {
+    origin: 'http://localhost', // <-- android emulator dir
+    credentials: true,
+  },
 
   onException: () => {
     // Disconnect from your database with an unhandled exception.
